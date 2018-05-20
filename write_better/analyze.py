@@ -9,6 +9,21 @@ from nltk.tokenize import word_tokenize
 
 logging.basicConfig(format='%(asctime)s %(levelname)s [%(filename)s:%(lineno)s - %(funcName)s()] %(message)s',
                     level=logging.DEBUG)
+ADJECTIVES = frozenset({'JJ', 'JJR', 'JJS'})
+ADVERBS = frozenset({'RB', 'RBR', 'RBS', 'WRB'})
+NOUNS = frozenset({'NN', 'NNS', 'NNP', 'NNPS'})
+PRONOUNS = frozenset({'PRP', 'PRP$', 'WP', 'WP$'})
+VERBS = frozenset({'VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ'})
+CONJUNCTIONS = frozenset({'CC'})
+DETERMINERS = frozenset({'DT', 'PDT', 'WDT'})
+PREPOSITIONS = frozenset({'IN'})
+PARTICLES = frozenset({'RP'})
+INTERJECTIONS = frozenset({'UH'})
+NUMBERS = frozenset({'CD'})
+FOREIGN_WORDS = frozenset({'FW'})
+ADS = ADJECTIVES | ADVERBS
+POS_TAGS = ADJECTIVES | ADVERBS | NOUNS | PRONOUNS | VERBS | CONJUNCTIONS | DETERMINERS | PREPOSITIONS | PARTICLES | \
+           INTERJECTIONS | NUMBERS | FOREIGN_WORDS
 
 
 class Analysis(object):
@@ -37,7 +52,7 @@ class Analysis(object):
     def char_count(self) -> int:
         return len(self.submitted)
 
-    def recombine(self, show_adjectives: bool=False) -> str:
+    def recombine(self, show_ads: bool=False, pos_tag: bool=False) -> str:
         with StringIO() as sfd:
             index = 0
             for tnum, token in enumerate(self.tokens):
@@ -49,7 +64,7 @@ class Analysis(object):
                         logging.error('Index: %s, token: "%s"', index, token)
                         break
                     elif token.startswith(self.submitted[index]):
-                        if show_adjectives and self.tags[tnum][1] in ['JJ', 'JJR', 'JJS']:
+                        if (pos_tag and self.tags[tnum][1] in POS_TAGS) or (show_ads and self.tags[tnum][1] in ADS):
                             sfd.write('<span class="{}">{}</span>'.format(self.tags[tnum][1], token))
                         else:
                             sfd.write(token)
@@ -62,9 +77,9 @@ class Analysis(object):
             return sfd.getvalue()
 
 
-def get_analyzed_text(submitted: str, show_adjectives: bool=False) -> str:
-    logging.debug('Submitted: %s\nshow_adjectives: %s', submitted, show_adjectives)
+def get_analyzed_text(submitted: str, show_ads: bool=False, pos_tag: bool=False) -> str:
+    logging.debug('Submitted: %s\nshow_ads: %s, pos_tag: %s', submitted, show_ads, pos_tag)
     analysis = Analysis(submitted)
-    result = analysis.recombine(show_adjectives=show_adjectives)
+    result = analysis.recombine(show_ads=show_ads, pos_tag=pos_tag)
     logging.debug('Result: %s', result)
     return result

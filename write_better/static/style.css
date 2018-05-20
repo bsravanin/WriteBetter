@@ -1,3 +1,63 @@
+/* Adjectives */
 .JJ, .JJR, .JJS {
     color: red;
+}
+
+/* Adverbs */
+.RB, .RBR, .RBS, .WRB {
+    color: deeppink;
+}
+
+/* Nouns */
+.NN, .NNS, .NNP, .NNPS {
+    color: blue;
+}
+
+/* Pronouns */
+.PRP, .PRP_DOLLAR, .WP, .WP_DOLLAR {
+    color: deepskyblue;
+}
+
+/* Verbs */
+.VB, .VBD, .VBG, .VBN, .VBP, .VBZ {
+    color: green;
+}
+
+/* Conjunctions */
+.CC {
+    color: lightgray;
+    font-weight: bold;
+}
+
+/* Determiners */
+.DT, .PDT, .WDT {
+    color: lightgray;
+}
+
+/* Prepositions */
+.IN {
+    color: gray;
+}
+
+/* Particles */
+.RP {
+    color: gray;
+    font-weight: bold;
+}
+
+/* Interjections */
+.UH {
+    color: cyan;
+    font-weight: bold;
+}
+
+/* Numbers */
+.CD {
+    color: cyan;
+}
+
+/* Foreign words */
+.FW {
+    color: cyan;
+    font-style: italic;
 }

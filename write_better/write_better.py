@@ -13,7 +13,8 @@ app.config['SECRET_KEY'] = 'not_really_secret'
 class WriterForm(Form):
     submitted = TextAreaField('Submitted')
     analyzed = TextAreaField('Analyzed')
-    show_adjectives = BooleanField('Show Adjectives', default=False)
+    show_ads = BooleanField('Show Adjectives & Adverbs', default=False)
+    pos_tag = BooleanField('Show all POS', default=False)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -22,8 +23,9 @@ def submit_manuscript():
     form = WriterForm(request.form)
     if request.method == 'POST':
         submitted = request.form.get('submitted')
-        show_adjectives = request.form.get('show_adjectives', False)
-        analyzed = analyze.get_analyzed_text(submitted=submitted, show_adjectives=show_adjectives)
+        show_ads = request.form.get('show_ads', False)
+        pos_tag = request.form.get('pos_tag', False)
+        analyzed = analyze.get_analyzed_text(submitted=submitted, show_ads=show_ads, pos_tag=pos_tag)
         return render_template('form.html', form=form, submitted=submitted, analyzed=analyzed)
     else:
         return render_template('form.html', form=form)

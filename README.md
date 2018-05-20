@@ -2,6 +2,36 @@ WriteBetter
 ===========
 A Flask app to analyze writing samples, powered by NLTK for analysis and Bootstrap for UI.
 
+It has two features:
+- Show adjectives and adverbs
+- Show all parts of speech
+
+To analyze your sample, copy+paste it into the textbox on the left, select one of the options, and submit. You will see
+the same text on the right, with either adjectives and adverbs or all parts of speech highlighted.
+
+Installation
+------------
+1. Clone or download [the code](https://github.com/bsravanin/WriteBetter).
+1. Run the following commands from a terminal:
+   1. `cd WriteBetter`
+   1. `tox`
+   1. `source .tox/py36/bin/activate`
+   1. `FLASK_APP=./write_better/write_better.py flask run`
+1. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in a browser.
+
+*NOTE*: I wrote this using Python v3.6.5, but I suspect it will work fine for any Python that can install 
+[the requirements](https://github.com/bsravanin/WriteBetter/blob/master/requirements.txt) with trivial changes.
+
+Security
+--------
+1. To style the analyzed text, the Flask template uses a "|safe" filter, assuming that the generated text is safe to
+   be interpreted as is. This assumption may be false under certain unusual circumstances that I cannot elaborate
+   on (due to my ignorance). If the writing sample is plain English, I wouldn't worry about it. Otherwise, I hope you
+   know what you are doing.
+1. The secret key of this Flask app has been hard-coded to "not_really_secret". This is safe if you are both running
+   the app and using it. If someone else is running it (like, online), I would think twice about submitting my novel
+   that I hope to profit from some day.
+
 Related
 -------
 - [NLTK Demos](http://text-processing.com/demo)
