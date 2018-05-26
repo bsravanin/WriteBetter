@@ -31,6 +31,7 @@ class Analysis(object):
         self.submitted = submitted
         self._tokens = None
         self._tags = None
+        self._token_count = None
 
     @property
     def tokens(self) -> list:
@@ -46,13 +47,15 @@ class Analysis(object):
 
     @property
     def token_count(self) -> int:
-        return len(self.tokens)
+        if self._token_count is None:
+            self._token_count = len([tag for tag in self.tags if tag[0] != tag[1]])
+        return self._token_count
 
     @property
     def char_count(self) -> int:
         return len(self.submitted)
 
-    def recombine(self, show_ads: bool=False, pos_tag: bool=False) -> str:
+    def recombine(self, show_ads: bool=False, show_pos: bool=False) -> str:
         with StringIO() as sfd:
             index = 0
             for tnum, token in enumerate(self.tokens):
@@ -64,7 +67,7 @@ class Analysis(object):
                         logging.error('Index: %s, token: "%s"', index, token)
                         break
                     elif token.startswith(self.submitted[index]):
-                        if (pos_tag and self.tags[tnum][1] in POS_TAGS) or (show_ads and self.tags[tnum][1] in ADS):
+                        if (show_pos and self.tags[tnum][1] in POS_TAGS) or (show_ads and self.tags[tnum][1] in ADS):
                             sfd.write('<span class="{}">{}</span>'.format(self.tags[tnum][1], token))
                         else:
                             sfd.write(token)
@@ -75,11 +78,3 @@ class Analysis(object):
                         index += 1
             sfd.write(self.submitted[index:])
             return sfd.getvalue()
-
-
-def get_analyzed_text(submitted: str, show_ads: bool=False, pos_tag: bool=False) -> str:
-    logging.debug('Submitted: %s\nshow_ads: %s, pos_tag: %s', submitted, show_ads, pos_tag)
-    analysis = Analysis(submitted)
-    result = analysis.recombine(show_ads=show_ads, pos_tag=pos_tag)
-    logging.debug('Result: %s', result)
-    return result

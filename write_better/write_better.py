@@ -1,8 +1,8 @@
 """Entry point into the app."""
 from flask import Flask, render_template, request
-from wtforms import Form, BooleanField, TextAreaField
+from wtforms import Form, SelectField, TextAreaField
 
-from write_better import analyze
+from write_better.analyze import Analysis
 
 
 app = Flask(__name__)
@@ -13,8 +13,7 @@ app.config['SECRET_KEY'] = 'not_really_secret'
 class WriterForm(Form):
     submitted = TextAreaField('Submitted')
     analyzed = TextAreaField('Analyzed')
-    show_ads = BooleanField('Show Adjectives & Adverbs', default=False)
-    pos_tag = BooleanField('Show all POS', default=False)
+    show = SelectField(choices=[('show_ads', 'Adjectives & Adverbs'), ('show_pos', 'All Parts of Speech')])
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -23,10 +22,13 @@ def submit_manuscript():
     form = WriterForm(request.form)
     if request.method == 'POST':
         submitted = request.form.get('submitted')
-        show_ads = request.form.get('show_ads', False)
-        pos_tag = request.form.get('pos_tag', False)
-        analyzed = analyze.get_analyzed_text(submitted=submitted, show_ads=show_ads, pos_tag=pos_tag)
-        return render_template('form.html', form=form, submitted=submitted, analyzed=analyzed)
+        show_ads = request.form.get('show') == 'show_ads'
+        show_pos = request.form.get('show') == 'show_pos'
+        analysis = Analysis(submitted)
+        analyzed = analysis.recombine(show_ads=show_ads, show_pos=show_pos)
+        return render_template('form.html', form=form, submitted=submitted, analyzed=analyzed,
+                               word_count=analysis.token_count, char_count=analysis.char_count,
+                               show_ads=show_ads, show_pos=show_pos)
     else:
         return render_template('form.html', form=form)
 

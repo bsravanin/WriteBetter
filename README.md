@@ -6,8 +6,7 @@ It has two features:
 - Show adjectives and adverbs
 - Show all parts of speech
 
-To analyze your sample, copy+paste it into the textbox on the left, select one of the options, and submit. You will see
-the same text on the right, with either adjectives and adverbs or all parts of speech highlighted.
+![Demo](https://drive.google.com/open?id=1VR5f-32TcnjOz5-Y9B2P0sbte4Dmq3yY)
 
 Installation
 ------------

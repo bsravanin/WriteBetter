@@ -8,21 +8,6 @@
     color: deeppink;
 }
 
-/* Nouns */
-.NN, .NNS, .NNP, .NNPS {
-    color: blue;
-}
-
-/* Pronouns */
-.PRP, .PRP_DOLLAR, .WP, .WP_DOLLAR {
-    color: deepskyblue;
-}
-
-/* Verbs */
-.VB, .VBD, .VBG, .VBN, .VBP, .VBZ {
-    color: green;
-}
-
 /* Conjunctions */
 .CC {
     color: lightgray;
@@ -34,9 +19,26 @@
     color: lightgray;
 }
 
-/* Prepositions */
-.IN {
-    color: gray;
+/* Foreign words */
+.FW {
+    color: black;
+    font-style: italic;
+}
+
+/* Interjections */
+.UH {
+    color: black;
+    font-weight: bold;
+}
+
+/* Nouns */
+.NN, .NNS, .NNP, .NNPS {
+    color: blue;
+}
+
+/* Numbers */
+.CD {
+    color: black;
 }
 
 /* Particles */
@@ -45,19 +47,17 @@
     font-weight: bold;
 }
 
-/* Interjections */
-.UH {
-    color: cyan;
-    font-weight: bold;
+/* Prepositions */
+.IN {
+    color: gray;
 }
 
-/* Numbers */
-.CD {
-    color: cyan;
+/* Pronouns */
+.PRP, .PRP_DOLLAR, .WP, .WP_DOLLAR {
+    color: deepskyblue;
 }
 
-/* Foreign words */
-.FW {
-    color: cyan;
-    font-style: italic;
+/* Verbs */
+.VB, .VBD, .VBG, .VBN, .VBP, .VBZ {
+    color: green;
 }
