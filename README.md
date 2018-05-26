@@ -6,7 +6,7 @@ It has two features:
 - Show adjectives and adverbs
 - Show all parts of speech
 
-![Demo](https://drive.google.com/open?id=1VR5f-32TcnjOz5-Y9B2P0sbte4Dmq3yY)
+![Demo](https://drive.google.com/uc?id=1VR5f-32TcnjOz5-Y9B2P0sbte4Dmq3yY)
 
 Installation
 ------------
