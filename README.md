@@ -6,6 +6,8 @@ It has two features:
 - Show adjectives and adverbs
 - Show all parts of speech
 
+Visit [WriteBetter on Google Cloud](https://write-better.appspot.com/) to try it yourself.
+
 ![Demo](https://drive.google.com/uc?id=1VR5f-32TcnjOz5-Y9B2P0sbte4Dmq3yY)
 
 Installation
@@ -18,7 +20,7 @@ Installation
    1. `FLASK_APP=./write_better/write_better.py flask run`
 1. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in a browser.
 
-*NOTE*: I wrote this using Python v3.6.5, but I suspect it will work fine for any Python that can install 
+*NOTE*: I wrote this using Python v3.7.0, but I suspect it will work fine for any Python that can install 
 [the requirements](https://github.com/bsravanin/WriteBetter/blob/master/requirements.txt) with trivial changes.
 
 Security

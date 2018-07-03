@@ -1,4 +1,7 @@
 """Entry point into the app."""
+import os
+import nltk
+
 from flask import Flask, render_template, request
 from wtforms import Form, SelectField, TextAreaField
 
@@ -9,6 +12,8 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = 'not_really_secret'
 
+NLTK_ROOT = os.path.join(os.path.dirname(__file__), 'static', 'nltk_data')
+
 
 class WriterForm(Form):
     submitted = TextAreaField('Submitted')
@@ -18,6 +23,10 @@ class WriterForm(Form):
 
 @app.route('/', methods=['GET', 'POST'])
 def submit_manuscript():
+    if nltk.data.path[-1] != NLTK_ROOT:
+        app.logger.info('Adding %s to NLTK data path.', NLTK_ROOT)
+        nltk.data.path.append(NLTK_ROOT)
+
     app.logger.debug(request.form)
     form = WriterForm(request.form)
     if request.method == 'POST':
