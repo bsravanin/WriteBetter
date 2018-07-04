@@ -1,10 +1,12 @@
 WriteBetter
 ===========
-A Flask app to analyze writing samples, powered by NLTK for analysis and Bootstrap for UI.
+A [Flask](http://flask.pocoo.org/) app to analyze writing samples, powered by [NLTK](http://www.nltk.org/) for analysis 
+and [Bootstrap](https://getbootstrap.com/) for UI.
 
-It has two features:
+It has the following features:
 - Show adjectives and adverbs
 - Show all parts of speech
+- Count words and characters
 
 Visit [WriteBetter on Google Cloud](https://write-better.appspot.com/) to try it yourself.
 
@@ -16,7 +18,7 @@ Installation
 1. Run the following commands from a terminal:
    1. `cd WriteBetter`
    1. `tox`
-   1. `source .tox/py36/bin/activate`
+   1. `source .tox/py37/bin/activate`
    1. `FLASK_APP=./write_better/write_better.py flask run`
 1. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in a browser.
 

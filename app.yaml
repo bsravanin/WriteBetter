@@ -1,6 +1,6 @@
 runtime: python
 env: flex
-entrypoint: gunicorn -b :$PORT write_better.write_better:app
+entrypoint: gunicorn -c gunicorn.conf.py -b :$PORT write_better.write_better:app
 
 runtime_config:
   python_version: 3.6

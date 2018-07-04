@@ -64,7 +64,8 @@ class Analysis(object):
                     token = '"'
                 while True:
                     if index >= self.char_count:
-                        logging.error('Index: %s, token: "%s"', index, token)
+                        # logging.debug('Index: %s, token: "%s"', index, token)
+                        logging.error('Something went wrong. Index: %s, char_count: %s.', index, self.char_count)
                         break
                     elif token.startswith(self.submitted[index]):
                         if (show_pos and self.tags[tnum][1] in POS_TAGS) or (show_ads and self.tags[tnum][1] in ADS):

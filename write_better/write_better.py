@@ -27,7 +27,7 @@ def submit_manuscript():
         app.logger.info('Adding %s to NLTK data path.', NLTK_ROOT)
         nltk.data.path.append(NLTK_ROOT)
 
-    app.logger.debug(request.form)
+    # app.logger.debug(request.form)
     form = WriterForm(request.form)
     if request.method == 'POST':
         submitted = request.form.get('submitted')
@@ -40,6 +40,11 @@ def submit_manuscript():
                                show_ads=show_ads, show_pos=show_pos)
     else:
         return render_template('form.html', form=form)
+
+
+@app.route('/about', methods=['GET'])
+def about():
+    return render_template('about.html')
 
 
 if __name__ == '__main__':
