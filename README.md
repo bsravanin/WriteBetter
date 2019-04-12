@@ -8,7 +8,7 @@ It has the following features:
 - Show all parts of speech
 - Count words and characters
 
-Visit [WriteBetter on Google Cloud](https://write-better.appspot.com/) to try it yourself.
+Visit [WriteBetter on Google Cloud](https://bsravan.in/write-better) to try it yourself.
 
 ![Demo](https://drive.google.com/uc?id=1VR5f-32TcnjOz5-Y9B2P0sbte4Dmq3yY)
 
