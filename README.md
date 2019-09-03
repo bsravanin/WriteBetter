@@ -17,12 +17,12 @@ Installation
 1. Clone or download [the code](https://github.com/bsravanin/WriteBetter).
 1. Run the following commands from a terminal:
    1. `cd WriteBetter`
-   1. `tox`
+   1. `tox -e py37`
    1. `source .tox/py37/bin/activate`
    1. `FLASK_APP=./write_better/write_better.py flask run`
 1. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in a browser.
 
-*NOTE*: I wrote this using Python v3.7.0, but I suspect it will work fine for any Python that can install 
+*NOTE*: I wrote this using Python v3.7.x, but I suspect it will work fine for any Python that can install 
 [the requirements](https://github.com/bsravanin/WriteBetter/blob/master/requirements.txt) with trivial changes.
 
 Security

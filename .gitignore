@@ -1,7 +1,6 @@
 .DS_Store
 .idea
 .tox
-*.egg-info
 *.pyc
 *.swp
 __pycache__
