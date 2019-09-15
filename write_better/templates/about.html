@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   <link rel="stylesheet" href="static/style.css">
 
   <title>About Write Better</title>
@@ -26,7 +26,8 @@
 
   <h3>Correctness</h3>
   <p>The analyzer first parses the sample into sentences and words using
-    <a href="http://www.nltk.org/api/nltk.tokenize.html?highlight=word_tokenize#nltk.tokenize.word_tokenize">NLTK's default word tokenizer</a>.
+    <a href="http://www.nltk.org/api/nltk.tokenize.html?highlight=word_tokenize#nltk.tokenize.word_tokenize">
+      NLTK's default word tokenizer</a>.
     Then it tags the parts of speech using
     <a href="http://www.nltk.org/api/nltk.tag.html?highlight=pos_tag#nltk.tag.pos_tag">NLTK's default POS tagger</a>.
     The correctness of word count depends on the tokenizer. The correctness of parts of speech identification depends
@@ -34,7 +35,7 @@
   </p>
 
   <h3>Security & Privacy</h3>
-  <p>This website does not have any features related to users or sessions and uses no cookies. When you submit a sample
+  <p>This app does not have any features related to users or sessions and uses no cookies. When you submit a sample
     to be analyzed, the browser sends that data in an encrypted format to Google Cloud's servers where this app is being
     hosted. The app will be able to see the data as plain text in order to analyze it, but it is not being logged or
     stored anywhere.
