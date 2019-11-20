@@ -35,9 +35,16 @@ def submit_manuscript():
         show_pos = request.form.get('show') == 'show_pos'
         analysis = Analysis(submitted)
         analyzed = analysis.recombine(show_ads=show_ads, show_pos=show_pos)
-        return render_template('form.html', form=form, submitted=submitted, analyzed=analyzed,
-                               word_count=analysis.token_count, char_count=analysis.char_count,
-                               show_ads=show_ads, show_pos=show_pos)
+        return render_template(
+            'form.html',
+            form=form,
+            submitted=submitted,
+            analyzed=analyzed,
+            word_count=analysis.token_count,
+            char_count=analysis.char_count,
+            show_ads=show_ads,
+            show_pos=show_pos,
+        )
     else:
         return render_template('form.html', form=form)
 

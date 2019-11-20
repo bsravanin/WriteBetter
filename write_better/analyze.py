@@ -7,8 +7,9 @@ from nltk import pos_tag
 from nltk.tokenize import word_tokenize
 
 
-logging.basicConfig(format='%(asctime)s %(levelname)s [%(filename)s:%(lineno)s - %(funcName)s()] %(message)s',
-                    level=logging.DEBUG)
+logging.basicConfig(
+    format='%(asctime)s %(levelname)s [%(filename)s:%(lineno)s - %(funcName)s()] %(message)s', level=logging.DEBUG
+)
 ADJECTIVES = frozenset({'JJ', 'JJR', 'JJS'})
 ADVERBS = frozenset({'RB', 'RBR', 'RBS', 'WRB'})
 NOUNS = frozenset({'NN', 'NNS', 'NNP', 'NNPS'})
@@ -22,8 +23,20 @@ INTERJECTIONS = frozenset({'UH'})
 NUMBERS = frozenset({'CD'})
 FOREIGN_WORDS = frozenset({'FW'})
 ADS = ADJECTIVES | ADVERBS
-POS_TAGS = ADJECTIVES | ADVERBS | NOUNS | PRONOUNS | VERBS | CONJUNCTIONS | DETERMINERS | PREPOSITIONS | PARTICLES | \
-           INTERJECTIONS | NUMBERS | FOREIGN_WORDS
+POS_TAGS = (
+    ADJECTIVES
+    | ADVERBS
+    | NOUNS
+    | PRONOUNS
+    | VERBS
+    | CONJUNCTIONS
+    | DETERMINERS
+    | PREPOSITIONS
+    | PARTICLES
+    | INTERJECTIONS
+    | NUMBERS
+    | FOREIGN_WORDS
+)
 
 
 class Analysis(object):
@@ -55,7 +68,7 @@ class Analysis(object):
     def char_count(self) -> int:
         return len(self.submitted)
 
-    def recombine(self, show_ads: bool=False, show_pos: bool=False) -> str:
+    def recombine(self, show_ads: bool = False, show_pos: bool = False) -> str:
         with StringIO() as sfd:
             index = 0
             for tnum, token in enumerate(self.tokens):
